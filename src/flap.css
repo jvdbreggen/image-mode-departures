@@ -1,0 +1,196 @@
+/* ===== FLAP STRUCTURE ===== */
+.character-flap {
+  position: relative;
+  width: 50px;
+  height: 80px;
+  background-color: var(--flap-bg);
+  border-radius: 3px;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 3px 6px var(--shadow-color);
+  /* on enter the screen animation */
+  opacity: 0;
+  animation: appearSharp 0.1s step-end forwards;
+}
+
+/* ===== FLAP HALVES ===== */
+.flap-top,
+.flap-bottom,
+.flap-flip {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: var(--flap-bg);
+  overflow: hidden;
+}
+
+/* ===== TOP HALF ===== */
+.flap-top {
+  top: 0;
+  border-bottom: 1.5px solid var(--divider-color);
+  align-items: flex-end;
+  padding-bottom: 1px;
+  box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.flap-top .char-text {
+  margin-bottom: -1.35rem;
+}
+
+/* ===== BOTTOM HALF ===== */
+.flap-bottom {
+  bottom: 0;
+  border-top: 1.5px solid var(--divider-color);
+  align-items: flex-start;
+  padding-top: 1px;
+  box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.flap-bottom .char-text {
+  margin-top: -1.35rem;
+}
+
+/* ===== FLIP ELEMENT ===== */
+.flap-flip {
+  top: 0;
+  transform-origin: bottom center;
+  backface-visibility: hidden;
+  z-index: 3;
+  border-bottom: 1.5px solid var(--divider-color);
+  align-items: flex-end;
+  padding-bottom: 1px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.3), inset 0 3px 3px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.flap-flip .char-text {
+  margin-bottom: -1.35rem;
+}
+
+/* ===== CHARACTER TEXT ===== */
+.char-text {
+  line-height: 1;
+  position: relative;
+  user-select: none;
+}
+
+/* ===== CENTER-OUT APPEARANCE DELAYS ===== */
+.character-flap:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.character-flap:nth-child(2) {
+  animation-delay: 0.45s;
+}
+.character-flap:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.character-flap:nth-child(4) {
+  animation-delay: 0.35s;
+}
+.character-flap:nth-child(5) {
+  animation-delay: 0.3s;
+}
+.character-flap:nth-child(6) {
+  animation-delay: 0.25s;
+}
+.character-flap:nth-child(7) {
+  animation-delay: 0.2s;
+}
+.character-flap:nth-child(8) {
+  animation-delay: 0.15s;
+}
+.character-flap:nth-child(9) {
+  animation-delay: 0.1s;
+}
+.character-flap:nth-child(10) {
+  animation-delay: 0.1s;
+}
+.character-flap:nth-child(11) {
+  animation-delay: 0.15s;
+}
+.character-flap:nth-child(12) {
+  animation-delay: 0.2s;
+}
+.character-flap:nth-child(13) {
+  animation-delay: 0.25s;
+}
+.character-flap:nth-child(14) {
+  animation-delay: 0.3s;
+}
+.character-flap:nth-child(15) {
+  animation-delay: 0.35s;
+}
+.character-flap:nth-child(16) {
+  animation-delay: 0.4s;
+}
+.character-flap:nth-child(17) {
+  animation-delay: 0.45s;
+}
+.character-flap:nth-child(18) {
+  animation-delay: 0.5s;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes appearSharp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes flipChar {
+  0% {
+    transform: rotateX(0deg);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+  15% {
+    transform: rotateX(40deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+    box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.3);
+  }
+  80% {
+    transform: rotateX(160deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+    box-shadow: 0 -5px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.flipping {
+  animation: flipChar 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ===== RESPONSIVE FLAPS ===== */
+@media (max-width: 768px) {
+  .character-flap {
+    width: 40px;
+    height: 64px;
+  }
+
+  .flap-top,
+  .flap-bottom,
+  .flap-flip {
+    font-size: 1.8rem;
+  }
+
+  .flap-top .char-text,
+  .flap-flip .char-text {
+    margin-bottom: -0.9rem;
+  }
+
+  .flap-bottom .char-text {
+    margin-top: -0.9rem;
+  }
+}
