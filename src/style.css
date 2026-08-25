@@ -1,0 +1,105 @@
+@import url('./flap.css');
+
+:root {
+  --bg-color: #0f0f0f;
+  --text-color: #f2f2f2;
+  --accent-color: #e2e2e2;
+  --flap-bg: #1a1a1a;
+  --divider-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.8);
+  --col-gap: 16px;
+  --flap-gap: 2px;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', monospace;
+  background-color: #000;
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== BOARD WRAPPER ===== */
+.board-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ===== COLUMN HEADER BAR ===== */
+.board-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-bottom: 8px;
+  /* margin-left matches the tomorrow-label placeholder width so headers align over flaps */
+  margin-left: 0;
+}
+
+.col-header {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  text-align: left;
+  /* Each header's width is set via inline style in JS to match the column's pixel width */
+}
+
+/* gap between column groups in header — mirrors the .col-gap divs in the data rows */
+.header-gap {
+  display: inline-block;
+}
+
+/* ===== DATA ROWS ===== */
+.board-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* extra space so the "Tomorrow" label above a row is not clipped */
+}
+
+.split-flap-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--flap-gap);
+  position: relative;
+  overflow: visible;
+}
+
+/* ===== COLUMN GAP SPACER ===== */
+.col-gap {
+  display: inline-block;
+  width: var(--col-gap);
+  flex-shrink: 0;
+}
+
+/* ===== TOMORROW LABEL ===== */
+.tomorrow-label {
+  display: none;
+  position: absolute;
+  /* sits above the DEPART column (first 5 flaps × 32px + 4 gaps × 2px = 168px) */
+  left: 0;
+  top: -14px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f59e0b;
+  white-space: nowrap;
+}
+
+.split-flap-row[data-tomorrow="true"] .tomorrow-label {
+  display: block;
+}

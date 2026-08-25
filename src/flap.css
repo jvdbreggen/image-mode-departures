@@ -1,0 +1,125 @@
+/* ===== FLAP STRUCTURE ===== */
+.character-flap {
+  position: relative;
+  width: 32px;
+  height: 52px;
+  background-color: var(--flap-bg);
+  border-radius: 3px;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 3px 6px var(--shadow-color);
+  opacity: 0;
+  animation: appearSharp 0.1s step-end forwards;
+}
+
+/* ===== FLAP HALVES ===== */
+.flap-top,
+.flap-bottom,
+.flap-flip {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: var(--flap-bg);
+  overflow: hidden;
+}
+
+/* ===== TOP HALF ===== */
+.flap-top {
+  top: 0;
+  border-bottom: 1.5px solid var(--divider-color);
+  align-items: flex-end;
+  padding-bottom: 1px;
+  box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.flap-top .char-text {
+  margin-bottom: -0.85rem;
+}
+
+/* ===== BOTTOM HALF ===== */
+.flap-bottom {
+  bottom: 0;
+  border-top: 1.5px solid var(--divider-color);
+  align-items: flex-start;
+  padding-top: 1px;
+  box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.flap-bottom .char-text {
+  margin-top: -0.85rem;
+}
+
+/* ===== FLIP ELEMENT ===== */
+.flap-flip {
+  top: 0;
+  transform-origin: bottom center;
+  backface-visibility: hidden;
+  z-index: 3;
+  border-bottom: 1.5px solid var(--divider-color);
+  align-items: flex-end;
+  padding-bottom: 1px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.3), inset 0 3px 3px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.flap-flip .char-text {
+  margin-bottom: -0.85rem;
+}
+
+/* ===== CHARACTER TEXT ===== */
+.char-text {
+  line-height: 1;
+  position: relative;
+  user-select: none;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes appearSharp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes flipChar {
+  0% {
+    transform: rotateX(0deg);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+  15% {
+    transform: rotateX(40deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+    box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.3);
+  }
+  80% {
+    transform: rotateX(160deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+    box-shadow: 0 -5px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.flipping {
+  animation: flipChar 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
