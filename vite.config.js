@@ -8,6 +8,7 @@ export default defineConfig({
   cacheDir: '/var/app/departures/.vite',
   server: {
     host: true,
+    port: 5174,
     allowedHosts: domain ? [hostname, `.${domain}`] : [hostname],
     proxy: {
       '/bootc-status': {
