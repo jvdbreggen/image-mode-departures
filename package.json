@@ -1,12 +1,10 @@
 {
-  "name": "departure-board",
+  "name": "train-tickets-departures",
+  "version": "0.0.1",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build"
   },
   "devDependencies": {
     "vite": "^6.0.0"

@@ -1,6 +1,6 @@
 [Unit]
 Description=Train Tickets Departure Board (Vite Dev Server)
-After=network.target systemd-tmpfiles-setup.service
+After=network.target
 
 [Service]
 Type=simple
