@@ -40,14 +40,13 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  padding-bottom: 8px;
-  /* margin-left matches the tomorrow-label placeholder width so headers align over flaps */
+  padding-bottom: 24px; /* room between heading and the first row's Tomorrow label */
   margin-left: 0;
 }
 
 .col-header {
   font-family: 'Space Grotesk', monospace;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
